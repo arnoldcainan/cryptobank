@@ -1,0 +1,54 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# --- Distribuição e Builds ---
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Virtual Environments (Crucial) ---
+# Ignora a pasta onde estão instaladas as bibliotecas
+venv/
+.venv/
+env/
+ENV/
+
+# --- IDEs (PyCharm / VS Code) ---
+# Ignora configurações locais do seu editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Variáveis de Ambiente e Segurança (CRÍTICO) ---
+# Nunca suba suas senhas para o GitHub!
+.env
+.env.*
+!.env.example
+
+# --- Testes e Coverage ---
+.coverage
+htmlcov/
+.pytest_cache/
+
+# --- Docker ---
+# Ignora logs ou dados locais de containers se houver mapeamento local
+docker-compose.override.yml
+*.log
+
+# --- Banco de Dados Local (se
