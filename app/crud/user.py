@@ -3,18 +3,18 @@ from sqlalchemy.future import select
 from app.models.user import User
 from app.schemas.user import UserCreate
 from passlib.context import CryptContext
+from app.core.security import get_password_hash
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 async def get_user_by_email(db: AsyncSession, email: str):
-    # Query assíncrona moderna (select)
     result = await db.execute(select(User).where(User.email == email))
     return result.scalars().first()
 
 
 async def create_user(db: AsyncSession, user: UserCreate):
-    hashed_password = pwd_context.hash(user.password)
+    hashed_password = get_password_hash(user.password)
 
     db_user = User(
         email=user.email,

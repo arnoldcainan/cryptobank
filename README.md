@@ -1,38 +1,25 @@
 # 🏦 Cryptobank API
 
-API de alta performance para gestão de portfólio de criptoativos, desenvolvida com **FastAPI** e **Arquitetura Assíncrona**.
+API profissional de alta performance para gestão de portfólio de criptoativos, com foco em segurança e escalabilidade.
 
-O sistema permite gestão de usuários, criação de carteiras de investimento e consulta de saldo com conversão em tempo real para Bitcoin (BTC), consumindo dados de mercado ao vivo.
+O sistema implementa um fluxo completo de **Autenticação JWT (OAuth2)**, permitindo que usuários gerenciem carteiras e consultem saldos convertidos em Bitcoin em tempo real (via integração com CoinGecko).
 
-## 🚀 Tech Stack
+![CI Status](https://github.com/SEU_USUARIO/cryptobank/actions/workflows/ci.yml/badge.svg)
 
-- **Linguagem:** Python 3.11
-- **Framework Web:** FastAPI (Async)
-- **Banco de Dados:** PostgreSQL
-- **ORM:** SQLAlchemy 2.0 (Async)
-- **Migrações:** Alembic
-- **Validação:** Pydantic V2
-- **Containerização:** Docker & Docker Compose
-- **Http Client:** Httpx (Chamadas assíncronas externas)
+## 🚀 Destaques Técnicos
 
-## 🏗️ Arquitetura
+- **Core:** Python 3.11, FastAPI (Async), Pydantic V2.
+- **Banco de Dados:** PostgreSQL + AsyncPG + SQLAlchemy 2.0.
+- **Segurança:** Autenticação JWT, Hash de senhas com Bcrypt.
+- **Qualidade:** Testes automatizados (Pytest) rodando em Pipeline de CI (GitHub Actions).
+- **Infra:** Docker & Docker Compose.
 
-O projeto segue os princípios da **Clean Architecture** simplificada, focando em desacoplamento e escalabilidade:
+## ⚡ Guia Rápido (Makefile)
 
-- **API/**: Controladores e rotas.
-- **Core/**: Configurações e segurança.
-- **Crud/**: Regras de acesso ao banco.
-- **Services/**: Integrações externas (CoinGecko API).
-- **Schemas/**: Contratos de dados (DTOs) com Pydantic.
+Para facilitar a produtividade, o projeto conta com comandos rápidos:
 
-## ⚡ Como Rodar
-
-### Pré-requisitos
-- Docker e Docker Compose instalados.
-
-### Passo a Passo
-
-1. **Clone o repositório:**
-   ```bash
-   git clone [https://github.com/SEU_USUARIO/cryptobank.git](https://github.com/SEU_USUARIO/cryptobank.git)
-   cd cryptobank
+```bash
+make up      # Sobe o ambiente (App + Banco)
+make test    # Roda a suíte de testes (Unitários e Integração)
+make logs    # Visualiza logs em tempo real
+make down    # Encerra a aplicação
