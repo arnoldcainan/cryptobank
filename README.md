@@ -1,25 +1,32 @@
 # 🏦 Cryptobank API
 
-API profissional de alta performance para gestão de portfólio de criptoativos, com foco em segurança e escalabilidade.
+API profissional de alta performance para gestão de portfólio de criptoativos, desenvolvida com foco em **Clean Architecture**, **Segurança** e **Escalabilidade**.
 
-O sistema implementa um fluxo completo de **Autenticação JWT (OAuth2)**, permitindo que usuários gerenciem carteiras e consultem saldos convertidos em Bitcoin em tempo real (via integração com CoinGecko).
+O sistema implementa um fluxo completo de **Autenticação JWT (OAuth2)**, permitindo que usuários gerenciem carteiras e consultem saldos convertidos em Bitcoin em tempo real (via integração assíncrona com CoinGecko).
 
 ![CI Status](https://github.com/SEU_USUARIO/cryptobank/actions/workflows/ci.yml/badge.svg)
+*(Substitua SEU_USUARIO pelo seu user do GitHub para o badge funcionar)*
 
 ## 🚀 Destaques Técnicos
 
 - **Core:** Python 3.11, FastAPI (Async), Pydantic V2.
 - **Banco de Dados:** PostgreSQL + AsyncPG + SQLAlchemy 2.0.
-- **Segurança:** Autenticação JWT, Hash de senhas com Bcrypt.
+- **Segurança:** Autenticação JWT (OAuth2 Password Flow), Hash de senhas com Bcrypt.
+- **Integração:** Consumo de APIs externas com Httpx (Non-blocking I/O).
 - **Qualidade:** Testes automatizados (Pytest) rodando em Pipeline de CI (GitHub Actions).
 - **Infra:** Docker & Docker Compose.
 
-## ⚡ Guia Rápido (Makefile)
+## 🏗️ Arquitetura
 
-Para facilitar a produtividade, o projeto conta com comandos rápidos:
+O projeto segue uma arquitetura modular inspirada em Clean Architecture:
 
-```bash
-make up      # Sobe o ambiente (App + Banco)
-make test    # Roda a suíte de testes (Unitários e Integração)
-make logs    # Visualiza logs em tempo real
-make down    # Encerra a aplicação
+```text
+📂 app
+├── 📂 api          # Endpoints e Injeção de Dependência
+├── 📂 core         # Configurações, Segurança (JWT) e Env Vars
+├── 📂 crud         # Camada de Acesso a Dados
+├── 📂 models       # Modelos do ORM (SQLAlchemy)
+├── 📂 schemas      # Contratos de Dados (Pydantic)
+└── 📂 services     # Regras de Negócio e Integrações Externas
+📂 tests            # Testes Unitários e de Integração
+📂 .github          # Pipelines de CI/CD
