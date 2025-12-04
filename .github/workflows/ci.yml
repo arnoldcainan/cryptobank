@@ -22,14 +22,16 @@ jobs:
           echo "POSTGRES_DB=cryptobank" >> .env
           echo "DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/cryptobank" >> .env
 
+      # FIX: Usando 'docker compose' (com espaço) em vez de 'docker-compose'
       - name: Start Containers
-        run: docker-compose up -d --build
+        run: docker compose up -d --build
 
       - name: Wait for DB
         run: sleep 10
 
       - name: Run Migrations
-        run: docker-compose exec -T app alembic upgrade head
+        # O flag -T é vital para não travar esperando input
+        run: docker compose exec -T app alembic upgrade head
 
       - name: Run Tests
-        run: docker-compose exec -T app pytest -v
+        run: docker compose exec -T app pytest -v
