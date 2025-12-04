@@ -2,10 +2,8 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 from app.core.config import settings
 
-# Cria o motor de conexão assíncrono
 engine = create_async_engine(settings.DATABASE_URL, echo=True) # echo=True mostra o SQL no terminal (bom para debug)
 
-# Cria a fábrica de sessões
 AsyncSessionLocal = sessionmaker(
     bind=engine,
     class_=AsyncSession,

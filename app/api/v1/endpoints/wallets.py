@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.deps import get_db
 from app.schemas.wallet import WalletCreate, WalletResponse
 from app.crud import wallet as crud_wallet
-from app.services import market_data  # <--- Importamos nosso serviço
+from app.services import market_data
 
 router = APIRouter()
 
@@ -32,7 +32,6 @@ async def get_wallet_summary(user_id: int, db: AsyncSession = Depends(get_db)):
 
     summary = []
     for w in wallets:
-        # Evita divisão por zero
         btc_value = (w.balance / btc_price) if btc_price > 0 else 0
         summary.append({
             "wallet_name": w.name,

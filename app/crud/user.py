@@ -4,7 +4,6 @@ from app.models.user import User
 from app.schemas.user import UserCreate
 from passlib.context import CryptContext
 
-# Configuração de Hashing de senha
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
@@ -25,5 +24,5 @@ async def create_user(db: AsyncSession, user: UserCreate):
 
     db.add(db_user)
     await db.commit()
-    await db.refresh(db_user)  # Recarrega o ID gerado pelo banco
+    await db.refresh(db_user)
     return db_user

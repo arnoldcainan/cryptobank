@@ -16,4 +16,3 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copia o resto do código
 COPY . .
 
-# (O comando de execução final é controlado pelo docker-compose)

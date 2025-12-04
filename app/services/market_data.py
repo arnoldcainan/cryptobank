@@ -6,7 +6,6 @@ async def get_crypto_price(coin_id: str = "bitcoin", currency: str = "usd") -> f
 
     async with httpx.AsyncClient() as client:
         try:
-            # Timeout é essencial para não travar sua API se o CoinGecko cair
             response = await client.get(url, timeout=10.0)
             response.raise_for_status()
             data = response.json()

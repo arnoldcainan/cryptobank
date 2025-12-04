@@ -9,9 +9,5 @@ class Wallet(Base):
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     name: Mapped[str] = mapped_column(String)  # Ex: "Investimento Longo Prazo"
     balance: Mapped[float] = mapped_column(Float, default=0.0)
-
-    # Chave estrangeira ligando ao usuário
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-
-    # Relacionamento reverso
     owner = relationship("User", back_populates="wallets")

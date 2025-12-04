@@ -7,8 +7,6 @@ from sqlalchemy import func
 class Base(DeclarativeBase):
     id: Any
 
-    # Gera o nome da tabela automaticamente baseado no nome da classe (ex: UserModel -> user_model)
-    # Mas vamos simplificar para usar o nome em minúsculo
     @property
     def __tablename__(cls) -> str:
         return cls.__name__.lower()

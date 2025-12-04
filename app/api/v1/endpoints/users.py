@@ -12,7 +12,6 @@ async def create_user(user_in: UserCreate, db: AsyncSession = Depends(get_db)):
     """
     Cria um novo usuário no Cryptobank.
     """
-    # 1. Verifica se email já existe
     user_exists = await crud_user.get_user_by_email(db, email=user_in.email)
     if user_exists:
         raise HTTPException(
@@ -20,6 +19,5 @@ async def create_user(user_in: UserCreate, db: AsyncSession = Depends(get_db)):
             detail="Este e-mail já está cadastrado."
         )
 
-    # 2. Cria o usuário
     new_user = await crud_user.create_user(db, user=user_in)
     return new_user
