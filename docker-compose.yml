@@ -10,6 +10,7 @@ services:
       - POSTGRES_DB=cryptobank
     ports:
       - "5432:5432"
+    # A definição do teste fica AQUI (no dono do serviço)
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
@@ -19,7 +20,8 @@ services:
   app:
     build: .
     container_name: cryptobank_app
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    # Comando de Auto-Migration + Start do Servidor
+    command: /bin/bash -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
       - .:/code
     ports:
@@ -28,6 +30,7 @@ services:
       - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/cryptobank
     depends_on:
       db:
+        # Aqui só dizemos: "Espere o db ficar saudável"
         condition: service_healthy
 
 volumes:
