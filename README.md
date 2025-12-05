@@ -4,8 +4,7 @@ API profissional de alta performance para gestão de portfólio de criptoativos,
 
 O sistema implementa um fluxo completo de **Autenticação JWT (OAuth2)**, permitindo que usuários gerenciem carteiras e consultem saldos convertidos em Bitcoin em tempo real (via integração assíncrona com CoinGecko).
 
-![CI Status](https://github.com/SEU_USUARIO/cryptobank/actions/workflows/ci.yml/badge.svg)
-*(Substitua SEU_USUARIO pelo seu user do GitHub para o badge funcionar)*
+![CI Status](https://github.com/arnoldcainan/cryptobank/actions/workflows/ci.yml/badge.svg)
 
 ## 🚀 Destaques Técnicos
 
